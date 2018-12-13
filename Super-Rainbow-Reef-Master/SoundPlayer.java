@@ -12,7 +12,7 @@ public class SoundPlayer {
     public static void SoundPlayer(boolean looping, String soundFile)
     {
         try{
-            soundStream = ReefWorld.class.getClassLoader().getResource(soundFile);
+            soundStream = ReefWorld.getReefWorld().getClass().getClassLoader().getResource(soundFile);
             clip = AudioSystem.getClip();
 
 

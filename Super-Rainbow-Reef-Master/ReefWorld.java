@@ -15,7 +15,7 @@ public class ReefWorld extends JPanel {
     public static final int sHeight = 500, sWidth = 640; //set screen size
 
     //Images
-    private Image background, ShellImg, StarImg, Octopus;
+    private Image background, ShellImg, StarImg,StarImg2, Octopus, Octopus2;
     private Image Brick1, Brick2, Brick3, Brick4, Brick5, Brick6, Brick7;
 
     private GameEvents gameEvents;
@@ -27,17 +27,20 @@ public class ReefWorld extends JPanel {
     ArrayList<Brick> Bricks = new ArrayList<>();
     ArrayList<Brick> OctoArray = new ArrayList<>();
 
+    static final ReefWorld game = new ReefWorld();
+
     private void init()
     {
         //load resources
         try
         {
             //Set Background Image of game
-            background = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Background2.bmp"));
+            background = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\backgroundtest.jpg"));
 
             //Shell and Star Image
-            ShellImg = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Katch.png"));
-            StarImg = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Pop.png"));
+            ShellImg = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\spongebob platform.png"));
+            StarImg = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\patric edit 2.png"));
+            StarImg2 =  ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\patrikedit.png"));
 
             //Color Bricks
             Brick1 = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Block1.gif"));
@@ -49,7 +52,9 @@ public class ReefWorld extends JPanel {
             Brick7 = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Block7.gif"));
 
             //Boss Octopus img
-            Octopus = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\Webp.net-resizeimage.png"));
+            Octopus = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\squidwardedit.png"));
+            Octopus2 = ImageIO.read(new File("C:\\Users\\TEMP\\Desktop\\csc413-secondgame-angelomadarang\\Super-Rainbow-Reef-Master\\Resources\\KrabsEdit.png"));
+            SoundPlayer.SoundPlayer( true, "Resources/SpongeBob Production Music Twelfth Street Rag.wav");
 
         }
         catch (Exception e)
@@ -68,6 +73,12 @@ public class ReefWorld extends JPanel {
         windowSize.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         windowSize.getContentPane().setFocusable(true);
 
+    }
+
+    //game instance for call/getter
+    public static ReefWorld getReefWorld()
+    {
+        return game;
     }
 
     //level 1 update
@@ -89,13 +100,13 @@ public class ReefWorld extends JPanel {
         windowSize.getContentPane().addKeyListener(playerControls);
 
         //octopus location image boss, score
-        OctoArray.add(new Brick(Octopus, 280, 0, 500));
+        OctoArray.add(new Brick(Octopus, 265, 5, 500));
 
         //top bricks location
         for(int i = 0; i < 15; i ++)
         {
             //x location plus spacing per brick - space y(20)
-            Bricks.add(new Brick(Brick1, 20 + 40 * i, 80, 40));
+            Bricks.add(new Brick(Brick1, 20 + 40 * i, 120, 40));
         }
 
         //2nd brick
@@ -107,12 +118,12 @@ public class ReefWorld extends JPanel {
         //3rd brick
         for(int i = 6; i < 8; i ++)
         {
-            Bricks.add(new Brick(Brick3, 20 + 40 * i, 120, 20));
+            Bricks.add(new Brick(Brick3, 20 + 40 * i, 80, 20));
         }
 
 
         //star bouncing location
-        Stars.add(new Star(StarImg, 200, 240));
+        Stars.add(new Star(StarImg2, 200, 240));
     }
 
     private void LevelTwo()
@@ -127,9 +138,9 @@ public class ReefWorld extends JPanel {
         windowSize.getContentPane().requestFocusInWindow();
         windowSize.getContentPane().addKeyListener(playerKeys);
 
-        OctoArray.add(new Brick(Octopus, 180, 0, 500));
-        OctoArray.add(new Brick(Octopus, 280, 0, 500));
-        OctoArray.add(new Brick(Octopus, 380, 0, 500));
+        OctoArray.add(new Brick(Octopus, 180, 5, 500));
+        //OctoArray.add(new Brick(Octopus, 280, 0, 500));
+        OctoArray.add(new Brick(Octopus2, 380, 1, 500));
 
                 //brick locations
         for(int i = 0; i < 15; i ++) {
@@ -342,7 +353,7 @@ public class ReefWorld extends JPanel {
 
     public static void main(String[] args)
     {
-        ReefWorld game = new ReefWorld();
+
         game.init();
         game.start();
     }
