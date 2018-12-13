@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="csc413-secondgame-angelomadarang:jar2 (spngebob theme)">
+    <output-path>$PROJECT_DIR$/out/artifacts/csc413_secondgame_angelomadarang_jar2__spngebob_theme_</output-path>
+    <root id="archive" name="csc413-secondgame-angelomadarang.jar">
+      <element id="module-output" name="csc413-secondgame-angelomadarang" />
+    </root>
+  </artifact>
+</component>
