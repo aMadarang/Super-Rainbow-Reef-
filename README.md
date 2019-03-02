@@ -4,7 +4,6 @@
 ## Date: 12/12/18
 ## IDE used: Intellij IDEA
 ## JAVA: 10
-## Current Working Directory(root): csc413-secondgame-angelomadarang
 
 ## How to Run the Game:
 
